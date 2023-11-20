@@ -6,5 +6,19 @@
 <body>
     <p>{{ menu }}</p>
     <h1>{{ title }}</h1>
+<ul>
+    {% for test in suite_test %}
+    {% if test.is_published %}
+    <li>
+        <h2> {{ test.title}} </h2>
+        <p> {{test.content}} </p>
+        <p><a href="statistic_data/{{ id }}">Read test data</a></p>
+        {% if not forloop.last %}
+        <hr>
+        {% endif%}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
 </body>
 </html>
