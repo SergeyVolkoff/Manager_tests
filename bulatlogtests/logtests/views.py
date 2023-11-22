@@ -4,31 +4,45 @@ from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
 
 
-menu = ['About tests', 'Result']
+menu = [
+    {'title':'REPORT','url_name':'report'},
+    {'title':'LOG','url_name':'log'},
+]
 
 data_db = [
-    {'id':1,'title':'test OSPF', 'content':'result test OSPF','is_published': True},
-    {'id':2,'title':'test rip', 'content':'result test RIP','is_published':True},
-    {'id':3,'title':'test bgp', 'content':'result test BGP','is_published':True},
+    {'id':1,'title':'TotalStatistic', 'content':'TotalPassFail','is_published': True},
+    {'id':2,'title':'Satistic by Suite', 'content':'TotalPassFail','is_published':True},
+    {'id':3,'title':'Statistic by tag', 'content':'TotalPassFail','is_published':True},
     ]
 
 def index(request):
-    # return HttpResponse("<h1>TESTS SUITE LOG</h1>")
+    # return HttpResponse("<h1>Test Statistics</h1>")
     data= {
-        'title': 'TESTS SUITE LOG',
         'menu': menu,
+        'title': 'Test Statistics',
         'suite_test':data_db
     }
     return render(request,'logtests/index.html',context = data)
 
-def statistic_testing(request,stat_id):
-    return HttpResponse(f"Test Statistics<p>id: {stat_id}</p>")
+def show_test_detail(request,test_data_id):
+    return HttpResponse(f"Test detail Log id={test_data_id}")
 
-def statistic_by_slug(request, stat_slug):
-    return HttpResponse(f"Test Statistics<p>slug: {stat_slug}</p>")
+def log(request):
+    return  render(
+        request,
+        'logtests/log.html',
+        {'title': 'LOG','menu': menu,}
+    )
+        
+def report(request):
+    return render(
+        request,
+        'logtests/report.html',
+        {'title': 'REPORT','menu': menu,}
+        )
 
-def show_test_data(request,test_data_id):
-    return HttpResponse(f"View data test id={test_data_id}")
+def test_execution_log(request):
+    return HttpResponse()
 
 def page_not_found(request, exception):
     return HttpResponse("<h1>No test page</h1>")

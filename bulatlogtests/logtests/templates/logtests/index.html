@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <p>{{ menu }}</p>
-    <h1>{{ title }}</h1>
+{% extends 'base.html' %}
+{% block content %}
+<h1> {{ title}}</h1>
 <ul>
     {% for test in suite_test %}
     {% if test.is_published %}
     <li>
         <h2> {{ test.title}} </h2>
         <p> {{test.content}} </p>
-        <p><a href="statistic_data/{{ id }}">Read test data</a></p>
+        <p><a href="{% url 'data_tests' test.id %}">Test detail</a></p>
         {% if not forloop.last %}
         <hr>
         {% endif%}
@@ -20,5 +15,7 @@
     {% endif %}
     {% endfor %}
 </ul>
+{% include 'logtests/includes/test_exe_log.html' %}
+{% endblock %}
 </body>
 </html>
