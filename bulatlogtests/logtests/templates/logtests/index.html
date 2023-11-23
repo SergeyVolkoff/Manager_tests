@@ -6,7 +6,7 @@
     {% if test.is_published %}
     <li>
         <h2> {{ test.title}} </h2>
-        <p> {{test.content}} </p>
+        <p> {{test.content|linebreaks|truncatewords:1}} </p>
         <p><a href="{% url 'data_tests' test.id %}">Test detail</a></p>
         {% if not forloop.last %}
         <hr>

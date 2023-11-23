@@ -10,7 +10,7 @@ menu = [
 ]
 
 data_db = [
-    {'id':1,'title':'TotalStatistic', 'content':'TotalPassFail','is_published': True},
+    {'id':1,'title':'TotalStatistic', 'content':'TotalPassFail dfdfgd fbbfdb dbdfbdfb xcvxcvsrxfb dbffb','is_published': True},
     {'id':2,'title':'Satistic by Suite', 'content':'TotalPassFail','is_published':True},
     {'id':3,'title':'Statistic by tag', 'content':'TotalPassFail','is_published':True},
     ]
