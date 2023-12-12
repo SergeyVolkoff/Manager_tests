@@ -14,4 +14,9 @@ urlpatterns = [
         'test_execution_log/',
         views.test_execution_log,
         name='test_log'),
+
+    path(
+        'detail/<int:test_data_id>/',
+          views.show_test_detail, 
+          name='data_tests'),
 ]
